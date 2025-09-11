@@ -49,14 +49,14 @@ titulo.addEventListener('click', function(){
     alert("Os olhos do Senhor estão em toda parte, observando atentamente os maus e os bons")
 });
 
+var botaoAdicionar = document.querySelector("#adicionar-paciente");
 
-
-
-
-
-
-
-
+botaoAdicionar.addEventListener('click',
+    function(event){
+        event.preventDefault();
+        console.log("Fiel adiconado a tabela");
+    }
+);
 
 
 
