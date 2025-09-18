@@ -54,22 +54,22 @@ var botaoAdicionar = document.querySelector("#adicionar-paciente");
 botaoAdicionar.addEventListener('click',
     function(event){
         event.preventDefault();
-        console.log("Fiel adiconado a tabela");
+        
+        //Seleciona a tag <form> a partir do id
+        var formulario = document.querySelector('#form-adiciona');
+        
+        //Variaveis para acessar o valor do <input>
+        var nome = formulario.nome.value;
+        var peso = formulario.peso.value;
+        var altura = formulario.altura.value;
+        var gordura = formulario.gordura.value;
+
+        console.log(nome);
+        console.log(peso);
+        console.log(altura);
+        console.log(gordura);
     }
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
