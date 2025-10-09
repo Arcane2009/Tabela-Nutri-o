@@ -7,19 +7,21 @@ botaoAdicionar.addEventListener('click',
         //Seleciona a tag <form> a partir do id//
         var formulario = document.querySelector('#form-adiciona');
         
-        //Variaveis para acessar o valor do <input>//
+        //Cria o elemento <tr> variaveis para acessar o valor do <input>//
         var paciente = dadosPacientesFormulario(formulario);
-        console.log(paciente);
-
-        //cria o elemento <tr>//
         var pacienteTr = criaTR(paciente);
-        if(!validarPaciente(paciente)){
+
+        var erros = validarPaciente(paciente);
+
+        //Impede de adicionar o paciente//
+        if(erros.length > 0){
+
+            var mensagemErro = document.querySelector("#mensagem-erro");
+            mensagemErro.textContent = erros;
             console.log("Paciente Inválido");
             return;
         }
 
-         //cria as tag <td>//
-        
          var tabela = document.querySelector("#tabela-pacientes");
          tabela.appendChild(pacienteTr);
          formulario.reset();
@@ -57,15 +59,18 @@ function criaTd(dado, classes){
     var td = document.createElement("td");
     td.textContent = dado;
     td.classList.add(classes);
-
     return td;
 }
 
 function validarPaciente(paciente){
-    if(validarPeso(paciente.peso)){
-        return true;
-    }else{
-        return false;
-    }
+
+    var erros = [];
+
+    if(!validarPeso(paciente.peso)) erros.push("O peso inserido é inválido!");
+    
+    if(!validarAltura(paciente.altura)) erros.push("A altura inserida é inválida!");
+    
+    return erros;
 }
+
 
